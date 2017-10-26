@@ -1,0 +1,12 @@
+syntax: glob
+*.o
+*.orig
+tmp
+*/a.out
+
+
+IQtest*
+job*
+__pycache__
+
+
