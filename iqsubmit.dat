@@ -1,9 +1,8 @@
-batchName = SDW_grid_twoQ
-command = hello world > ecran.out
+command = cat model.dat > output.dat
 
-submitOptions = --account=charleb1 --time=00:01:00 --job-name=IQtest
+submitOptions = --account=charleb1 --time=00:01:00 --job-name=hello
 
-templateFiles = para.dat
+templateFiles = para.dat model.dat
 
 param1=M1 = [0.25, 1.0, 2.0]
 param2=(n1,n2) = [ (1,1), (1,2), (3:1:5, 3:2:8), (5,10) ]

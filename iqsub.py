@@ -169,39 +169,36 @@ print(len(paramValuesList2))
 
 
 
-templateFiles = findParameterLine('templateFiles',fileList)  
-templateList = templateFiles.split('=')#[1].strip().split()
-#print templateList, templateFiles
-#exit()
 
 
-fileIn  = open('para.dat','r')
-#
+
 N=0
 for distribution in paramValuesList2:
   directoryName = 'job'+str(N)
   if not os.path.exists(directoryName):
     os.mkdir(directoryName)
-  fileOut = open(directoryName+'/'+'para.dat','w')
-  
-
-  fileIn.seek(0) #rewind to the beginning of the file
-  for line in fileIn:
-    for name,value in zip(paramNames2,distribution):
-      line =  line.replace('~~'+name+'~~',str(value))
-    
-    fileOut.write(line)
-  
-    
-  #fileIn.seek(0) #rewind to the beginning of the file
-  #for line in fileIn:
-  #  lineOut = line.replace('~~'+paramNames2[0]+'~~',str(paramValuesList2[0][0]))
-  #  #print lineOut
-  #  fileOut.write(lineOut)
-  fileOut.close()
   N+=1
-  
 
-fileIn.close()
-   
+
+templatesLine = findParameterLine('templateFiles',fileList)  
+templatesList = templatesLine.split('=')
+
+for templateFile in templatesList[1].replace(',',' ').replace('+',' ').split():
+  fileIn  = open(templateFile.strip(),'r')
+  N=0
+  for distribution in paramValuesList2:
+    directoryName = 'job'+str(N)
+      
+    fileOut = open(directoryName+'/'+templateFile,'w')
+    fileIn.seek(0) #rewind to the beginning of the file
+    for line in fileIn:
+      for name,value in zip(paramNames2,distribution):
+        line =  line.replace('~~'+name+'~~',str(value))
+      
+      fileOut.write(line)
+    fileOut.close()
+    N+=1
+    
+
+  fileIn.close()
 
