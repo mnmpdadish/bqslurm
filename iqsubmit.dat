@@ -1,10 +1,11 @@
 batchName = SDW_grid_twoQ
 command = hello world > ecran.out
 
-submitOptions = --account=<your_project_account> --time=00:01:00 --job-name=IQtest
+submitOptions = --account=charleb1 --time=00:01:00 --job-name=IQtest
 
 templateFiles = para.dat
 
 param1=M1 = [0.25, 1.0, 2.0]
 param2=(n1,n2) = [ (1,1), (1,2), (3:1:5, 3:2:8), (5,10) ]
 param3=M2 = 3.0:0.5:4.0
+

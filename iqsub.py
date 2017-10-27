@@ -34,9 +34,6 @@ def findParameterLine(parameterName,fileList):
      return ''
 
 
-
-
-
 input_string_list = sys.argv[:]
 
 if(len(input_string_list)!=2): 
@@ -172,7 +169,10 @@ print(len(paramValuesList2))
 
 
 
-  
+templateFiles = findParameterLine('templateFiles',fileList)  
+templateList = templateFiles.split('=')#[1].strip().split()
+#print templateList, templateFiles
+#exit()
 
 
 fileIn  = open('para.dat','r')
